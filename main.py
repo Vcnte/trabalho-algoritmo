@@ -6,6 +6,13 @@ except FileNotFoundError:
     exit()
 data = localizardoc.read().split()
 
+dicionario = {}
+for palavra in data:
+    if palavra in dicionario:
+        dicionario[palavra] += 1
+    else:
+        dicionario[palavra] = 1
+
 if localizardoc == None:
     print("Não foi possível localizar/abrir o documento.")
 
@@ -21,38 +28,19 @@ else:
         if opcaomenu == "1":
             palavraencontrada = input("Digite aqui a palavra a ser encontrada: ")
             if palavraencontrada in data:
-                numerodepalavrasiguais = data.count(palavraencontrada)
-                print(numerodepalavrasiguais)
+                print(dicionario[palavraencontrada])
             else:
                 print("Palavra não encontrada, tente novamente.")
 
         elif opcaomenu == "2":
-            dicionario = {}
-            for palavra in data:
-                if palavra in dicionario:
-                    dicionario[palavra] += 1
-                else:
-                    dicionario[palavra] = 1
             dicionario_ordenado = sorted(dicionario.items(), key=lambda x: x[1], reverse=False)
 
             print(dicionario_ordenado)
         elif opcaomenu == "3":
-            dicionario = {}
-            for palavra in data:
-                if palavra in dicionario:
-                    dicionario[palavra] += 1
-                else:
-                    dicionario[palavra] = 1
             dicionario_ordenado = sorted(dicionario.items(), key=lambda x: x[1], reverse=True)
 
             print(dicionario_ordenado)
         elif opcaomenu == "4":
-            dicionario = {}
-            for palavra in data:
-                if palavra in dicionario:
-                    dicionario[palavra] += 1
-                else:
-                    dicionario[palavra] = 1
             dicionario_ordenado = sorted(dicionario.keys())
             print(dicionario_ordenado)
         elif opcaomenu == "5":
